@@ -1,9 +1,12 @@
 import React from 'react'
 import { Home, Search, Grid2X2, ShoppingCart, User } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
+import { useUi } from '../store/uiContext'
 
 export default function BottomNav() {
   const link = 'flex flex-col items-center text-xs'
+  const { openCart } = useUi()
+
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 z-40 py-2">
       <div className="max-w-6xl mx-auto grid grid-cols-5">
@@ -19,11 +22,11 @@ export default function BottomNav() {
           <Grid2X2 size={20} />
           <span>Categories</span>
         </NavLink>
-        <NavLink to="/cart" className={({isActive}) => `${link} ${isActive ? 'text-[#0C831F]' : 'text-slate-600'}` }>
+        <button onClick={openCart} className={`${link} text-slate-600`}>
           <ShoppingCart size={20} />
           <span>Cart</span>
-        </NavLink>
-        <NavLink to="#" className={`${link} text-slate-600`}>
+        </button>
+        <NavLink to="/auth" className={({isActive}) => `${link} ${isActive ? 'text-[#0C831F]' : 'text-slate-600'}` }>
           <User size={20} />
           <span>Account</span>
         </NavLink>

@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import TopBar from '../components/TopBar'
-import BottomNav from '../components/BottomNav'
+import Layout from '../components/Layout'
 import { getProductById } from '../data/products'
 import { useCart } from '../store/cartContext'
 
@@ -19,8 +18,7 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 pb-20">
-      <TopBar />
+    <Layout>
       <div className="px-4 mt-3">
         <div className="bg-white rounded-xl overflow-hidden">
           <div className="w-full aspect-square bg-slate-100">
@@ -59,7 +57,6 @@ export default function ProductDetailPage() {
           </div>
         </div>
       </div>
-      <BottomNav />
-    </div>
+    </Layout>
   )
 }

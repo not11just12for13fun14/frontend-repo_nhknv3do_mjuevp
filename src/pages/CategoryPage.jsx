@@ -1,6 +1,5 @@
 import React from 'react'
-import TopBar from '../components/TopBar'
-import BottomNav from '../components/BottomNav'
+import Layout from '../components/Layout'
 import ProductCard from '../components/ProductCard'
 import { useParams } from 'react-router-dom'
 import { CATEGORIES, getProductsByCategory } from '../data/products'
@@ -11,15 +10,13 @@ export default function CategoryPage() {
   const products = getProductsByCategory(categoryName)
 
   return (
-    <div className="min-h-screen bg-slate-50 pb-20">
-      <TopBar />
+    <Layout>
       <div className="px-4 mt-3">
         <h1 className="text-xl font-bold text-slate-800">{cat ? cat.label : 'Category'}</h1>
       </div>
-      <div className="px-4 mt-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+      <div className="px-4 mt-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
         {products.map(p => <ProductCard key={p.id} product={p} />)}
       </div>
-      <BottomNav />
-    </div>
+    </Layout>
   )
 }
